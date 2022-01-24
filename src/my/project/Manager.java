@@ -17,12 +17,12 @@ public class Manager {
     }
 
     public void addVehicles() {
-        this.vehicles.add(new Car("black", 300.0D, "Mustang", "Benzin", 5, 120000.0D, "Sommer", Lizens.car));
-        this.vehicles.add(new Car("red", 420.0D, "Ferrari", "Benzin", 2, 210000.0D, "Sommer", Lizens.car));
-        this.vehicles.add(new Car("green", 380.0D, "McLaren", "Benzin", 2, 190000.0D, "Winter", Lizens.car));
-        this.vehicles.add(new MotorCycle("black/red", 140.0D, "Suzuki", "Benzin", 2, 60000.0D, false, Lizens.motor));
-        this.vehicles.add(new MotorCycle("yellow", 160.0D, "Yamaha", "Benzin", 2, 90000.0D, false, Lizens.motor));
-        this.vehicles.add(new Scooter("black", 60.0D, "Vespino City X", "Electro", 2, 3900.0D, true, "20aH", Lizens.scooter));
+        this.vehicles.add(new Car("black", 314.0D, "dodge charger hellcat", "petrol", 5, 120000.0D, "summer", License.car));
+        this.vehicles.add(new Car("red", 272.0D, "honda civic", "petrol", 5, 50000.0D, "summer", License.car));
+        this.vehicles.add(new Car("white", 261.0D, "tesla model x", "electronic", 5, 190000.0D, "winter", License.car));
+        this.vehicles.add(new MotorCycle("green", 210.0D, "suzuki", "petrol", 2, 60000.0D, false, License.motor));
+        this.vehicles.add(new MotorCycle("yellow", 231.0D, "yamaha", "petrol", 2, 90000.0D, true, License.motor));
+        this.vehicles.add(new Scooter("black", 120.0D, "vespa", "electronic", 2, 3900.0D, true, "20aH", License.scooter));
 
     }
 
@@ -34,11 +34,11 @@ public class Manager {
         while(var2.hasNext()) {
             Vehicle v = (Vehicle)var2.next();
             data[0] = v.carName;
-            data[1] = "Price: " + String.valueOf(v.price);
-            data[2] = "Seat: " + String.valueOf(v.seat);
-            data[3] = "Fuel: " + v.fuel;
-            data[4] = "Color:" + v.color;
-            data[5] = "Km/h: " + String.valueOf(v.kmh);
+            data[1] = "price: " + String.valueOf(v.price);
+            data[2] = "seat: " + String.valueOf(v.seat);
+            data[3] = "fuel: " + v.fuel;
+            data[4] = "color:" + v.color;
+            data[5] = "max speed: " + String.valueOf(v.kmh) + " km/h";
             IO.outPutListInBox(data, 2);
         }
 
@@ -55,12 +55,15 @@ public class Manager {
     }
 
     public void addCustomer() {
-        this.customers.add(new Customer("Shawn", "Lacarta", 18, "male", Lizens.car));
-        this.customers.add(new Customer("Anojan", "Pirabakaran", 16, "male", Lizens.car));
-        this.customers.add(new Customer("Max", "Muster", 14, "male", Lizens.motor));
+        this.customers.add(new Customer("Shawn", "Lacarta", 18, "male", License.car));
+        this.customers.add(new Customer("Anojan", "Pirabakaran", 16, "male", License.car));
+        this.customers.add(new Customer("Max", "Muster", 14, "male", License.motor));
+
+    }
+    public void printCustomer(){
+        addCustomer();
         String[] data = new String[4];
         Iterator var2 = this.customers.iterator();
-
         while(var2.hasNext()) {
             Customer c = (Customer)var2.next();
             data[0] = c.getName();
@@ -69,7 +72,6 @@ public class Manager {
             data[3] = c.getGender();
             IO.outPutListInBox(data, 2);
         }
-
     }
 
     public void printVehicles() {
@@ -88,7 +90,7 @@ public class Manager {
         int[] formatteddateintend = new int[3];
         this.printVehicles();
         int vehicleIndex = this.scan.nextInt() - 1;
-        this.printPersons();
+        printPersons();
         int personIndex = this.scan.nextInt() - 1;
         if (((Customer)this.customers.get(personIndex)).getAge() > 17 && ((Vehicle)this.vehicles.get(vehicleIndex)).getLizens() == ((Customer)this.customers.get(personIndex)).getLizens()) {
             String comment;
@@ -146,11 +148,11 @@ public class Manager {
     public void printPersons() {
         System.out.println("Person:");
 
-        for(int i = 0; i < this.customers.size(); ++i) {
-            System.out.println(((Customer)this.customers.get(i)).getName());
+        for(int i = 0; i < customers.size(); ++i) {
+            System.out.println(((Customer)customers.get(i)).getName());
         }
 
         System.out.println("Enter Person (1-3): ");
-        System.out.println();
+
     }
 }

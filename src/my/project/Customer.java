@@ -5,14 +5,14 @@ public class Customer {
     private String lastname;
     private int age;
     private String gender;
-    private Lizens lizens;
+    private License license;
 
-    public Customer(String name, String lastname, int age, String gender, Lizens lizens) {
+    public Customer(String name, String lastname, int age, String gender, License license) {
         this.name = name;
         this.lastname = lastname;
         this.age = age;
         this.gender = gender;
-        this.lizens = lizens;
+        this.license = license;
     }
 
     public String getName() {
@@ -51,11 +51,11 @@ public class Customer {
         this.age = age;
     }
 
-    public Lizens getLizens() {
-        return this.lizens;
+    public License getLizens() {
+        return this.license;
     }
 
-    public void setLizens(Lizens lizens) {
-        this.lizens = lizens;
+    public void setLicens(License license) {
+        this.license = license;
     }
 }

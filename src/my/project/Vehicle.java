@@ -7,16 +7,16 @@ public class Vehicle {
     protected String fuel;
     protected int seat;
     protected double price;
-    protected Lizens lizens;
+    protected License license;
 
-    public Vehicle(String color, double kmh, String carName, String fuel, int seat, double price, Lizens lizens) {
+    public Vehicle(String color, double kmh, String carName, String fuel, int seat, double price, License license) {
         this.color = color;
         this.kmh = kmh;
         this.carName = carName;
         this.fuel = fuel;
         this.seat = seat;
         this.price = price;
-        this.lizens = lizens;
+        this.license = license;
     }
 
     public String getColor() {
@@ -67,11 +67,11 @@ public class Vehicle {
         this.price = price;
     }
 
-    public Lizens getLizens() {
-        return this.lizens;
+    public License getLizens() {
+        return this.license;
     }
 
-    public void setLizens(Lizens lizens) {
-        this.lizens = lizens;
+    public void setLicens(License license) {
+        this.license = license;
     }
 }

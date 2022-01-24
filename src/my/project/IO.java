@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class IO {
 
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_RESET = "\u001B[0m";
+
     public static void outPutListInBox(String[] strings, int mode) {
         int borderLength = 0;
 
@@ -51,21 +55,32 @@ public class IO {
 
     }
 
+    public void greeting(){
+
+        System.out.println(ANSI_CYAN + " __   __  _______  __   __  ___   _______  ___      _______    ______    _______  __    _  _______  _______  ___     \n" +
+                "|  | |  ||       ||  | |  ||   | |       ||   |    |       |  |    _ |  |       ||  |  | ||       ||   _   ||   |    \n" +
+                "|  |_|  ||    ___||  |_|  ||   | |       ||   |    |    ___|  |   | ||  |    ___||   |_| ||_     _||  |_|  ||   |    \n" +
+                "|       ||   |___ |       ||   | |       ||   |    |   |___   |   |_||_ |   |___ |       |  |   |  |       ||   |    \n" +
+                "|       ||    ___||       ||   | |      _||   |___ |    ___|  |    __  ||    ___||  _    |  |   |  |       ||   |___ \n" +
+                " |     | |   |___ |   _   ||   | |     |_ |       ||   |___   |   |  | ||   |___ | | |   |  |   |  |   _   ||       |\n" +
+                "  |___|  |_______||__| |__||___| |_______||_______||_______|  |___|  |_||_______||_|  |__|  |___|  |__| |__||_______|" + ANSI_RESET);
+    }
+
     public void startMenu(){
         Manager output = new Manager();
         Scanner scan = new Scanner(System.in);
 
+        greeting();
         while(true) {
             while(true) {
-                IO.outPutListInBox(new String[]{"Welcome to my shop", "1. list vehicle", "2. list clients", "3. rent vehicle", "4. list contracts"}, 2);
-                System.out.println("What do you want to do?");
-                int input = scan.nextInt();
+                IO.outPutListInBox(new String[]{"1. list vehicle", "2. list clients", "3. rent vehicle", "4. list contracts"}, 2);
+                int input = readRangedInt(1, 4);
                 switch(input) {
                     case 1:
                         output.printVehicle();
                         break;
                     case 2:
-                        output.addCustomer();
+                        output.printCustomer();
                         break;
                     case 3:
                         output.makeContract();
@@ -79,4 +94,42 @@ public class IO {
             }
         }
     }
+
+    /**
+     * This method is responsible for the validation of Integers. If the
+     * user input is not an Integer it will be parsed to an int.
+     * @return It will return input. Input is the parsed value.
+     */
+    public static int readInt() {
+        Scanner scan = new Scanner(System.in);
+        int input = 0;
+        boolean isValid = false;
+        while (!isValid) {
+            try {
+                input = Integer.parseInt(scan.nextLine());
+                isValid = true;
+            } catch (NumberFormatException e) {
+                System.out.println("wrong input");
+            }
+        }
+        return input;
+    }
+
+    /**
+     * This method is responsible for the validation of the min and
+     * max value of the user inputs. In this method i can define the range
+     * of the user inputs.
+     * @param min This parameter is responsible for the min value.
+     * @param max This parameter is responsible for the max value.
+     * @return This method returns the readInt method.
+     */
+    public static int readRangedInt(int min, int max) {
+        int input = readInt();
+        while (input < min || input > max) {
+            System.out.println("wrong input");
+            input = readInt();
+        }
+        return input;
+    }
+
 }

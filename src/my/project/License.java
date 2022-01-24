@@ -1,10 +1,11 @@
 package my.project;
 
-public enum Lizens {
+public enum License {
     car,
     motor,
     scooter;
 
-    private Lizens() {
+    private License() {
+
     }
 }
