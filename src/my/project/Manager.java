@@ -23,6 +23,11 @@ public class Manager {
         this.vehicles.add(new MotorCycle("black/red", 140.0D, "Suzuki", "Benzin", 2, 60000.0D, false, Lizens.motor));
         this.vehicles.add(new MotorCycle("yellow", 160.0D, "Yamaha", "Benzin", 2, 90000.0D, false, Lizens.motor));
         this.vehicles.add(new Scooter("black", 60.0D, "Vespino City X", "Electro", 2, 3900.0D, true, "20aH", Lizens.scooter));
+
+    }
+
+    public void printVehicle(){
+        addVehicles();
         String[] data = new String[6];
         Iterator var2 = this.vehicles.iterator();
 
