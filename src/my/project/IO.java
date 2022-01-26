@@ -67,12 +67,12 @@ public class IO {
                 "|       ||    ___||       ||   | |      _||   |___ |    ___|  |    __  ||    ___||  _    |  |   |  |       ||   |___ \n" +
                 " |     | |   |___ |   _   ||   | |     |_ |       ||   |___   |   |  | ||   |___ | | |   |  |   |  |   _   ||       |\n" +
                 "  |___|  |_______||__| |__||___| |_______||_______||_______|  |___|  |_||_______||_|  |__|  |___|  |__| |__||_______|" + ANSI_RESET);
+        m.addVehicles();
+        m.addCustomer();
     }
 
     public void startMenu() {
-        m.addVehicles();
-        m.addCustomer();
-        greeting();
+
         while (true) {
             while (true) {
                 IO.outPutListInBox(new String[]{"1. list vehicle", "2. rent vehicle", "3. log in as admin"}, 2);
@@ -119,7 +119,7 @@ public class IO {
             data[1] = "price: " + String.valueOf(v.price);
             data[2] = "seat: " + String.valueOf(v.seat);
             data[3] = "fuel: " + v.fuel;
-            data[4] = "color:" + v.color;
+            data[4] = "color: " + v.color;
             data[5] = "max speed: " + String.valueOf(v.kmh) + " km/h";
             IO.outPutListInBox(data, 2);
         }
@@ -139,6 +139,8 @@ public class IO {
             IO.outPutListInBox(data, 2);
         }
     }
+
+
 
     /**
      * This method is responsible for the validation of Integers. If the
