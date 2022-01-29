@@ -59,12 +59,13 @@ public class Manager {
      * right to do so.
      */
     public void makeContract() {
+
         int[] formatteddateintstart = new int[3];
         int[] formatteddateintend = new int[3];
         this.printVehicles();
-        int vehicleIndex = this.scan.nextInt() - 1;
+        int vehicleIndex = IO.readRangedInt(1, 6) - 1;
         printPersons();
-        int personIndex = this.scan.nextInt() - 1;
+        int personIndex = IO.readRangedInt(1, 3) - 1;
         if (((Customer)this.customers.get(personIndex)).getAge() > 17 && ((Vehicle)this.vehicles.get(vehicleIndex)).getLizens() == ((Customer)this.customers.get(personIndex)).getLicense()) {
             String comment;
             int j;
@@ -72,7 +73,7 @@ public class Manager {
             while(true) {
                 try {
                     System.out.println("Start (YYYY, MM, DD): ");
-                    scan.nextLine();
+
                     comment = this.scan.nextLine();
                     String[] formatteddatestart = comment.split(", ");
                     j = 0;
