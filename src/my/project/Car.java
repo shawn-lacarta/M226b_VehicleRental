@@ -8,11 +8,4 @@ public class Car extends Vehicle {
         this.tireType = tireType;
     }
 
-    public String getTireType() {
-        return this.tireType;
-    }
-
-    public void setTireType(String tireType) {
-        this.tireType = tireType;
-    }
 }

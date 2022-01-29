@@ -5,12 +5,18 @@ import java.util.Scanner;
 
 public class IO {
 
-    private static final String ANSI_PURPLE = "\u001B[35m";
     private static final String ANSI_CYAN = "\u001B[36m";
     private static final String ANSI_RESET = "\u001B[0m";
     private Scanner scan = new Scanner(System.in);
     private Manager m = new Manager();
 
+    /**
+     * This method is responsible for the BorderBox. This is
+     * to make the output look better for the user.
+     *
+     * @param strings Give strings for output
+     * @param mode    Give mode for the output
+     */
     public static void outPutListInBox(String[] strings, int mode) {
         int borderLength = 0;
 
@@ -51,6 +57,12 @@ public class IO {
         System.out.println("╝");
     }
 
+    /**
+     * This method belongs for the BorderBox. It separates the
+     * individual boxes by lines.
+     *
+     * @param length Length of the line
+     */
     private static void line(int length) {
         for (int i = 0; i < length; ++i) {
             System.out.print("═");
@@ -58,8 +70,10 @@ public class IO {
 
     }
 
+    /**
+     * This method is responsible that the user gets a nice welcome.
+     */
     public void greeting() {
-
         System.out.println(ANSI_CYAN + " __   __  _______  __   __  ___   _______  ___      _______    ______    _______  __    _  _______  _______  ___     \n" +
                 "|  | |  ||       ||  | |  ||   | |       ||   |    |       |  |    _ |  |       ||  |  | ||       ||   _   ||   |    \n" +
                 "|  |_|  ||    ___||  |_|  ||   | |       ||   |    |    ___|  |   | ||  |    ___||   |_| ||_     _||  |_|  ||   |    \n" +
@@ -71,8 +85,11 @@ public class IO {
         m.addCustomer();
     }
 
+    /**
+     * This method represents the start menu for the user. Here the
+     * user can choose in which direction he wants to move in the application.
+     */
     public void startMenu() {
-
         while (true) {
             while (true) {
                 IO.outPutListInBox(new String[]{"1. list vehicle", "2. rent vehicle", "3. log in as admin"}, 2);
@@ -87,6 +104,10 @@ public class IO {
         }
     }
 
+    /**
+     * This method represents the start menu for the admin. The admin
+     * has additional features.
+     */
     public void adminMenu() {
         System.out.println("password: ");
         String password = scan.nextLine();
@@ -108,6 +129,10 @@ public class IO {
         }
     }
 
+    /**
+     * This method prints all vehicles by price, number of seats, fuel,
+     * color and max speed.
+     */
     public void printVehicle() {
 
         String[] data = new String[6];
@@ -126,12 +151,15 @@ public class IO {
 
     }
 
-    public void printCustomer(){
+    /**
+     * This method prints all customers that are registered.
+     */
+    public void printCustomer() {
 
         String[] data = new String[4];
         Iterator var2 = m.getCustomers().iterator();
-        while(var2.hasNext()) {
-            Customer c = (Customer)var2.next();
+        while (var2.hasNext()) {
+            Customer c = (Customer) var2.next();
             data[0] = c.getName();
             data[1] = c.getLastname();
             data[2] = String.valueOf(c.getAge());
@@ -139,7 +167,6 @@ public class IO {
             IO.outPutListInBox(data, 2);
         }
     }
-
 
 
     /**

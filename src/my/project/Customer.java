@@ -19,43 +19,25 @@ public class Customer {
         return this.name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getLastname() {
         return this.lastname;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
 
     public int getAge() {
         return this.age;
     }
 
-    public void setBirthDate(String birthDate) {
-        this.age = this.age;
-    }
 
     public String getGender() {
         return this.gender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public License getLizens() {
+    public License getLicense() {
         return this.license;
     }
 
-    public void setLicens(License license) {
-        this.license = license;
-    }
+
 }

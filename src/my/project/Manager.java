@@ -6,9 +6,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Manager {
+
     private ArrayList<Vehicle> vehicles = new ArrayList();
     private ArrayList<Contract> contracts = new ArrayList();
     private ArrayList<Customer> customers = new ArrayList();
+    private static final String ANSI_PURPLE = "\u001B[35m";
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_RED = "\u001B[31m";
     private Scanner scan = new Scanner(System.in);
 
     public ArrayList<Vehicle> getVehicles() {
@@ -29,12 +33,10 @@ public class Manager {
 
     }
 
-
-
     public void addCustomer() {
         customers.add(new Customer("mikal", "longer", 18, "male", License.car));
         customers.add(new Customer("stephen", "marry", 16, "male", License.car));
-        customers.add(new Customer("sonya", "bush", 19, "male", License.motor));
+        this.customers.add(new Customer("Max", "Muster", 14, "male", License.motor));
     }
 
     public void makeContract() {
@@ -44,19 +46,19 @@ public class Manager {
         int vehicleIndex = this.scan.nextInt() - 1;
         printPersons();
         int personIndex = this.scan.nextInt() - 1;
-        if (((Customer) this.customers.get(personIndex)).getAge() > 17) {
+        if (((Customer)this.customers.get(personIndex)).getAge() > 17 && ((Vehicle)this.vehicles.get(vehicleIndex)).getLizens() == ((Customer)this.customers.get(personIndex)).getLicense()) {
             String comment;
             int j;
             label37:
-            while (true) {
+            while(true) {
                 try {
-                    scan.nextLine();
                     System.out.println("Start (YYYY, MM, DD): ");
+                    scan.nextLine();
                     comment = this.scan.nextLine();
                     String[] formatteddatestart = comment.split(", ");
                     j = 0;
 
-                    while (true) {
+                    while(true) {
                         if (j >= formatteddatestart.length) {
                             break label37;
                         }
@@ -64,20 +66,20 @@ public class Manager {
                         formatteddateintstart[j] = Integer.parseInt(formatteddatestart[j]);
                         ++j;
                     }
-                } catch (Exception DateTimeException) {
-                    System.out.println("invalid date");
+                } catch (Exception var10) {
+                    System.out.println("Invalid date");
                 }
             }
 
             label28:
-            while (true) {
+            while(true) {
                 try {
                     System.out.println("End (YYYY, MM, DD): ");
                     comment = this.scan.nextLine();
                     String[] formatteddateend = comment.split(", ");
                     j = 0;
 
-                    while (true) {
+                    while(true) {
                         if (j >= formatteddateend.length) {
                             break label28;
                         }
@@ -85,19 +87,17 @@ public class Manager {
                         formatteddateintend[j] = Integer.parseInt(formatteddateend[j]);
                         ++j;
                     }
-                } catch (Exception DateTimeException) {
-                    System.out.println("invalid date");
+                } catch (Exception var9) {
+                    System.out.println("Invalid date");
                 }
             }
 
-            System.out.println("comment:");
+            System.out.println("Comment:");
             comment = this.scan.nextLine();
-            Contract contract = new Contract(LocalDate.of(formatteddateintstart[0], formatteddateintstart[1], formatteddateintstart[2]), LocalDate.of(formatteddateintend[0], formatteddateintend[1], formatteddateintend[2]), comment, (Customer) this.customers.get(personIndex), (Vehicle) this.vehicles.get(vehicleIndex));
+            Contract contract = new Contract(LocalDate.of(formatteddateintstart[0], formatteddateintstart[1], formatteddateintstart[2]), LocalDate.of(formatteddateintend[0], formatteddateintend[1], formatteddateintend[2]), comment, (Customer)this.customers.get(personIndex), (Vehicle)this.vehicles.get(vehicleIndex));
             this.contracts.add(contract);
-        } else if (((Vehicle) this.vehicles.get(vehicleIndex)).getLizens() == ((Customer) this.customers.get(personIndex)).getLizens()) {
-            System.out.println("wrong license");
-        } else {
-            System.out.println("under age");
+        }else{
+            System.out.println(ANSI_RED + "wrong license or under age" + ANSI_RESET);
         }
 
     }
@@ -118,7 +118,7 @@ public class Manager {
             System.out.println(((Vehicle) vehicles.get(i)).getCarName());
         }
 
-        System.out.println("enter a vehicle (1-6): ");
+        System.out.println(ANSI_PURPLE + "enter a vehicle (1-6): " + ANSI_RESET);
     }
 
     public void printPersons() {
@@ -126,6 +126,6 @@ public class Manager {
         for (int i = 0; i < customers.size(); ++i) {
             System.out.println(((Customer) customers.get(i)).getName());
         }
-        System.out.println("enter person (1-3): ");
+        System.out.println(ANSI_PURPLE + "enter person (1-3): " + ANSI_RESET);
     }
 }
