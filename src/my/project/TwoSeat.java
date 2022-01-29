@@ -1,5 +1,10 @@
 package my.project;
 
+/**
+ * This class is responsible for all the TwoSeat in this
+ * project. It is extending from Vehicle because Vehicle
+ * has the basic to build a TwoSeat.
+ */
 public class TwoSeat extends Vehicle {
     protected boolean helmetStand;
 

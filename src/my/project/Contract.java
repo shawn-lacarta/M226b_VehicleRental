@@ -2,6 +2,9 @@ package my.project;
 
 import java.time.LocalDate;
 
+/**
+ * This class is responsible for creating a contract.
+ */
 public class Contract {
     private LocalDate startDate;
     private LocalDate endDate;

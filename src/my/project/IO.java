@@ -3,6 +3,11 @@ package my.project;
 import java.util.Iterator;
 import java.util.Scanner;
 
+/**
+ * This class is responsible for In and Output. Here you can
+ * find all methods that have something to do directly with
+ * the user.
+ */
 public class IO {
 
     private static final String ANSI_CYAN = "\u001B[36m";

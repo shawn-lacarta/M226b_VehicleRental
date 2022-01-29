@@ -1,5 +1,9 @@
 package my.project;
 
+/**
+ * This class is responsible for every vehicle in this
+ * project. It has every attribute to build a vehicle.
+ */
 public class Vehicle {
     protected String color;
     protected double kmh;

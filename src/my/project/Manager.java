@@ -5,6 +5,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * This class is responsible for the logic during the whole
+ * program.
+ */
 public class Manager {
 
     private ArrayList<Vehicle> vehicles = new ArrayList();
@@ -23,6 +27,10 @@ public class Manager {
         return customers;
     }
 
+    /**
+     * This method creates all the vehicles that are for rent. Here
+     * we have cars, motorcycles and scooters.
+     */
     public void addVehicles() {
         vehicles.add(new Car("black", 314.0D, "dodge charger hellcat", "petrol", 5, 120000.0D, "summer", License.car));
         vehicles.add(new Car("red", 272.0D, "honda civic", "petrol", 5, 50000.0D, "summer", License.car));
@@ -33,12 +41,23 @@ public class Manager {
 
     }
 
+    /**
+     * This method creates all customers registered in the company. To
+     * make the whole thing varied, each customer has different licenses
+     * or ages.
+     */
     public void addCustomer() {
         customers.add(new Customer("mikal", "longer", 18, "male", License.car));
         customers.add(new Customer("stephen", "marry", 16, "male", License.car));
         this.customers.add(new Customer("Max", "Muster", 14, "male", License.motor));
     }
 
+    /**
+     *A contract is created here. First, you can select a car. After
+     * that you choose who you are. At last you can define the start and end
+     * date. Of course, the whole thing is also checked whether you have the
+     * right to do so.
+     */
     public void makeContract() {
         int[] formatteddateintstart = new int[3];
         int[] formatteddateintend = new int[3];
@@ -102,6 +121,10 @@ public class Manager {
 
     }
 
+    /**
+     * Here are printed the vehicles that you can select. This
+     * is part of the makeContract process.
+     */
     public void printContracts() {
         for (int i = 0; i < contracts.size(); ++i) {
             PrintStream var10000 = System.out;
@@ -112,6 +135,10 @@ public class Manager {
 
     }
 
+    /**
+     * Here are printed the vehicles that you can select. This
+     * is part of the makeContract process.
+     */
     public void printVehicles() {
         System.out.println("vehicles:");
         for (int i = 0; i < vehicles.size(); ++i) {
@@ -121,6 +148,10 @@ public class Manager {
         System.out.println(ANSI_PURPLE + "enter a vehicle (1-6): " + ANSI_RESET);
     }
 
+    /**
+     * Here are printed the persons that you can select. This
+     * is part of the makeContract process.
+     */
     public void printPersons() {
         System.out.println("person:");
         for (int i = 0; i < customers.size(); ++i) {

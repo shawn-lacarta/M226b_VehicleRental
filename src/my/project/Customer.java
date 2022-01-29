@@ -1,5 +1,8 @@
 package my.project;
 
+/**
+ * This class is responsible for creating a client.
+ */
 public class Customer {
     private String name;
     private String lastname;

@@ -1,5 +1,9 @@
 package my.project;
 
+/**
+ * This class is responsible for cars. It is extended with
+ * Vehicle, because Vehicle has the basic base to make a car.
+ */
 public class Car extends Vehicle {
     private String tireType;
 

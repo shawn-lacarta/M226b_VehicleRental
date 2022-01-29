@@ -1,5 +1,9 @@
 package my.project;
 
+/**
+ * This class is responsible for the scooters. It is extended
+ * with TwoSeat because TwoSeat has the basic to build a scooter
+ */
 public class Scooter extends TwoSeat {
     private String batteryPower;
 
