@@ -207,7 +207,7 @@ public class IO {
             System.out.println("wrong input");
             input = readInt();
         }
-        System.out.println(input);
+       
         return input;
     }
 
