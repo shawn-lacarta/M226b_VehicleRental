@@ -1,5 +1,7 @@
 package my.project;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -12,6 +14,7 @@ public class IO {
 
     private static final String ANSI_CYAN = "\u001B[36m";
     private static final String ANSI_RESET = "\u001B[0m";
+    private final String PASSWORD = "test";
     private Scanner scan = new Scanner(System.in);
     private Manager m = new Manager();
 
@@ -79,13 +82,7 @@ public class IO {
      * This method is responsible that the user gets a nice welcome.
      */
     public void greeting() {
-        System.out.println(ANSI_CYAN + " __   __  _______  __   __  ___   _______  ___      _______    ______    _______  __    _  _______  _______  ___     \n" +
-                "|  | |  ||       ||  | |  ||   | |       ||   |    |       |  |    _ |  |       ||  |  | ||       ||   _   ||   |    \n" +
-                "|  |_|  ||    ___||  |_|  ||   | |       ||   |    |    ___|  |   | ||  |    ___||   |_| ||_     _||  |_|  ||   |    \n" +
-                "|       ||   |___ |       ||   | |       ||   |    |   |___   |   |_||_ |   |___ |       |  |   |  |       ||   |    \n" +
-                "|       ||    ___||       ||   | |      _||   |___ |    ___|  |    __  ||    ___||  _    |  |   |  |       ||   |___ \n" +
-                " |     | |   |___ |   _   ||   | |     |_ |       ||   |___   |   |  | ||   |___ | | |   |  |   |  |   _   ||       |\n" +
-                "  |___|  |_______||__| |__||___| |_______||_______||_______|  |___|  |_||_______||_|  |__|  |___|  |__| |__||_______|" + ANSI_RESET);
+        System.out.println(ANSI_CYAN + readFile("../files/welcome.txt") + ANSI_RESET);
         m.addVehicles();
         m.addCustomer();
     }
@@ -118,7 +115,7 @@ public class IO {
         String password = scan.nextLine();
 
         while (true) {
-            if (password.equals("test")) {
+            if (password.equals(PASSWORD)) {
                 IO.outPutListInBox(new String[]{"1. list clients", "2. list contracts", "3. log out as admin"}, 2);
                 int input = readRangedInt(1, 3);
                 switch (input) {
@@ -210,7 +207,25 @@ public class IO {
             System.out.println("wrong input");
             input = readInt();
         }
+        System.out.println(input);
         return input;
     }
 
+    public String readFile(String filename){
+        try {
+            StringBuilder fileContent = new StringBuilder();
+            Scanner fileReader = new Scanner(new File("maps/" + filename));
+            while (fileReader.hasNextLine()) {
+                fileContent.append(fileReader.nextLine()).append("\n");
+            }
+            return fileContent.toString();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public String getPASSWORD() {
+        return PASSWORD;
+    }
 }

@@ -49,12 +49,12 @@ public class Manager {
     public void addCustomer() {
         customers.add(new Customer("mikal", "longer", 18, "male", License.car));
         customers.add(new Customer("stephen", "marry", 16, "male", License.car));
-        this.customers.add(new Customer("Max", "Muster", 14, "male", License.motor));
+        customers.add(new Customer("Max", "Muster", 18, "male", License.motor));
     }
 
     /**
      *A contract is created here. First, you can select a car. After
-     * that you choose who you are. At last you can define the start and end
+     * that you choose who you are. Last you can define the start and end
      * date. Of course, the whole thing is also checked whether you have the
      * right to do so.
      */
@@ -71,7 +71,7 @@ public class Manager {
             int j;
             label37:
             while(true) {
-                try {
+
                     System.out.println("Start (YYYY, MM, DD): ");
 
                     comment = this.scan.nextLine();
@@ -86,14 +86,12 @@ public class Manager {
                         formatteddateintstart[j] = Integer.parseInt(formatteddatestart[j]);
                         ++j;
                     }
-                } catch (Exception var10) {
-                    System.out.println("Invalid date");
-                }
+
             }
 
             label28:
             while(true) {
-                try {
+
                     System.out.println("End (YYYY, MM, DD): ");
                     comment = this.scan.nextLine();
                     String[] formatteddateend = comment.split(", ");
@@ -107,15 +105,20 @@ public class Manager {
                         formatteddateintend[j] = Integer.parseInt(formatteddateend[j]);
                         ++j;
                     }
-                } catch (Exception var9) {
-                    System.out.println("Invalid date");
-                }
+
             }
 
             System.out.println("Comment:");
             comment = this.scan.nextLine();
-            Contract contract = new Contract(LocalDate.of(formatteddateintstart[0], formatteddateintstart[1], formatteddateintstart[2]), LocalDate.of(formatteddateintend[0], formatteddateintend[1], formatteddateintend[2]), comment, (Customer)this.customers.get(personIndex), (Vehicle)this.vehicles.get(vehicleIndex));
-            this.contracts.add(contract);
+            try{
+                System.out.println(personIndex);
+                System.out.println(vehicleIndex);
+                Contract contract = new Contract(LocalDate.of(formatteddateintstart[0], formatteddateintstart[1], formatteddateintstart[2]), LocalDate.of(formatteddateintend[0], formatteddateintend[1], formatteddateintend[2]), comment, customers.get(personIndex), vehicles.get(vehicleIndex));
+                this.contracts.add(contract);
+            }catch(Exception exception){
+                exception.printStackTrace();
+                System.out.println("invalid");
+            }
         }else{
             System.out.println(ANSI_RED + "wrong license or under age" + ANSI_RESET);
         }
@@ -128,9 +131,7 @@ public class Manager {
      */
     public void printContracts() {
         for (int i = 0; i < contracts.size(); ++i) {
-            PrintStream var10000 = System.out;
-            String var10001 = ((Customer) customers.get(i)).getName();
-            var10000.println("Name: " + var10001 + "\nAge: " + ((Customer) customers.get(i)).getAge() + "\nVehicle: " + ((Vehicle) vehicles.get(i)).getCarName() + "\nStart date: " + ((Contract) contracts.get(i)).getStartDate() + "\nEnd date: " + ((Contract) contracts.get(i)).getEndDate());
+            System.out.println("Name: " + contracts.get(i).getCustomer().getName() + "\nAge: " + contracts.get(i).getCustomer().getAge() + "\nVehicle: " + contracts.get(i).getVehicle().getCarName() + "\nStart date: " + contracts.get(i).getStartDate() + "\nEnd date: " + contracts.get(i).getEndDate());
             System.out.println();
         }
 
