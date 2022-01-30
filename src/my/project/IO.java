@@ -211,6 +211,11 @@ public class IO {
         return input;
     }
 
+    /**
+     * This method is responsible to read files.
+     * @param filename the filename, that this method should look at
+     * @return returns the content of the file
+     */
     public String readFile(String filename){
         try {
             StringBuilder fileContent = new StringBuilder();

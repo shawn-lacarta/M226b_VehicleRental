@@ -13,10 +13,6 @@ class IOTest {
 
     private IO io = new IO();
 
-    @BeforeEach
-    void setUp() {
-    }
-
     @Test
     void adminMenu() {
         System.out.println("the password is correct");

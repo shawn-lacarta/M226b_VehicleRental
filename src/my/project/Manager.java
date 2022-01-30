@@ -86,9 +86,7 @@ public class Manager {
                         formatteddateintstart[j] = Integer.parseInt(formatteddatestart[j]);
                         ++j;
                     }
-
             }
-
             label28:
             while(true) {
 
@@ -105,19 +103,15 @@ public class Manager {
                         formatteddateintend[j] = Integer.parseInt(formatteddateend[j]);
                         ++j;
                     }
-
             }
-
             System.out.println("Comment:");
             comment = this.scan.nextLine();
             try{
-                System.out.println(personIndex);
-                System.out.println(vehicleIndex);
                 Contract contract = new Contract(LocalDate.of(formatteddateintstart[0], formatteddateintstart[1], formatteddateintstart[2]), LocalDate.of(formatteddateintend[0], formatteddateintend[1], formatteddateintend[2]), comment, customers.get(personIndex), vehicles.get(vehicleIndex));
-                this.contracts.add(contract);
+                System.out.println("successfully done");
+                contracts.add(contract);
             }catch(Exception exception){
-                exception.printStackTrace();
-                System.out.println("invalid");
+                System.out.println(ANSI_RED + "invalid date, please check template" + ANSI_RESET);
             }
         }else{
             System.out.println(ANSI_RED + "wrong license or under age" + ANSI_RESET);

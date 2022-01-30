@@ -1,16 +1,10 @@
 package my.project.test;
 
 import my.project.Contract;
-import my.project.Customer;
 import my.project.Manager;
-import my.project.Vehicle;
 import org.junit.jupiter.api.Assertions;
-
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.MissingFormatArgumentException;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class ManagerTest {
 
